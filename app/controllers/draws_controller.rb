@@ -1,2 +1,0 @@
-class DrawsController < ApplicationController
-end
