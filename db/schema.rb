@@ -10,20 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_27_002057) do
+ActiveRecord::Schema.define(version: 2021_05_27_211250) do
 
   create_table "cards", force: :cascade do |t|
     t.string "name"
-    t.string "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "draw_id"
+    t.string "cardType"
+    t.text "summary"
+    t.string "image"
+    t.text "meaning_up"
+    t.text "meaning_rev"
+    t.text "desc"
     t.index ["draw_id"], name: "index_cards_on_draw_id"
   end
 
   create_table "draws", force: :cascade do |t|
     t.string "layout"
-    t.string "reading"
+    t.text "reading"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
