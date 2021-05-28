@@ -4,6 +4,11 @@ class Api::V1::DrawsController < ApplicationController
     render({json: Draw.all})
   end
 
+  def show
+    draw = Draw.find_by(id: params[:id])
+    render json: draw
+  end
+
   def create
     draw = Draw.create(draw_params)
     render json: draw
@@ -13,17 +18,6 @@ class Api::V1::DrawsController < ApplicationController
     # else 
     #   render json: {error: "Error creating draw"}
     # end
-  end
-
-  def show
-    draw = Draw.find_by(id: params[:id])
-    render json: draw
-  end
-
-  def update
-    # draw = Draw.find_by(id: params[:id])
-    # draw.update(draw_params)
-    # render json: draw
   end
 
   def destroy
@@ -38,4 +32,15 @@ class Api::V1::DrawsController < ApplicationController
     params.require(:draw).permit(:layout, :reading)
   end
 
+end
+
+
+
+def create
+  draw = Draw.create(draw_params)
+  render json: draw.cards
+end
+
+def draw_params
+  params.require(:draw).permit(:layout, :reading, :card_ids)
 end

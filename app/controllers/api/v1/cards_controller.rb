@@ -1,10 +1,12 @@
 class Api::V1::CardsController < ApplicationController
 
   def index
-    # cards = RestClient.get 'https://raw.githubusercontent.com/ronniekram/tarot-js-v2/main/front/src/cards.json'
-    # card_array = JSON.parse(cards)["cards"]
-    # binding.pry
-    render({json: Card.all})
+    draw = Draw.find_by(id: params[:draw_id])
+    if draw
+      render json: draw.cards
+    else
+      render({json: Card.all})
+    end
   end
 
   def show
