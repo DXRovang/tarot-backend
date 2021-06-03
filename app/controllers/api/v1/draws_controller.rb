@@ -23,7 +23,7 @@ class Api::V1::DrawsController < ApplicationController
   private
 
   def draw_params
-    params.require(:draw).permit(:layout, :reading, :card)
+    params.require(:draw).permit(:layout, :card)
   end
 
 end
