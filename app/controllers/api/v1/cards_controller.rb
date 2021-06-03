@@ -1,12 +1,8 @@
 class Api::V1::CardsController < ApplicationController
 
   def index
-    draw = Draw.find_by(id: params[:draw_id])
-    if draw
-      render json: draw.cards
-    else
-      render({json: Card.all})
-    end
+    card = Card.all
+    render json: card
   end
 
   def show
@@ -19,7 +15,6 @@ class Api::V1::CardsController < ApplicationController
     params.require(:card).permit(
       :name,
       :created_at,
-      :draw_id,
       :cardType,
       :summary,
       :image,

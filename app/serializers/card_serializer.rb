@@ -1,7 +1,6 @@
 class CardSerializer < ActiveModel::Serializer
   attributes  :id, 
               :name, 
-              :draw_id, 
               :cardType, 
               :summary, 
               :image, 

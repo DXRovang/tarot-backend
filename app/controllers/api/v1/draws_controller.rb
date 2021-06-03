@@ -12,12 +12,6 @@ class Api::V1::DrawsController < ApplicationController
   def create
     draw = Draw.create(draw_params)
     render json: draw
-    # draw = Draw.new(draw_params)
-    # if draw.save
-    #   render json: draw
-    # else 
-    #   render json: {error: "Error creating draw"}
-    # end
   end
 
   def destroy
@@ -29,18 +23,9 @@ class Api::V1::DrawsController < ApplicationController
   private
 
   def draw_params
-    params.require(:draw).permit(:layout, :reading)
+    params.require(:draw).permit(:layout, :reading, :card)
   end
 
 end
 
-
-
-def create
-  draw = Draw.create(draw_params)
-  render json: draw.cards
-end
-
-def draw_params
-  params.require(:draw).permit(:layout, :reading, :card_ids)
-end
+# params.require(:draw).permit(:layout, :reading, :card_ids=>[])
