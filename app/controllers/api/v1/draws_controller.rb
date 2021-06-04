@@ -5,8 +5,8 @@ class Api::V1::DrawsController < ApplicationController
   end
 
   def show
-    draw = Draw.find_by(id: params[:id])
-    render json: draw
+    @draw = Draw.find_by(id: params[:id])
+    render json: @draw
   end
 
   def create
