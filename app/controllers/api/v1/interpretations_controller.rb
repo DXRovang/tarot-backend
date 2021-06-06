@@ -12,9 +12,15 @@ class Api::V1::InterpretationsController < ApplicationController
   end
 
   def create
-    # binding.pry
     @interpretation = @draw.interpretations.create(interpretation_params)
     render json: @draw
+  end
+
+  def destroy
+    interpretation = Interpretation.find(params[:id])
+    draw = Draw.find(interpretation.draw_id)
+    interpretation.destroy
+    render json: draw
   end
 
   private
@@ -22,7 +28,7 @@ class Api::V1::InterpretationsController < ApplicationController
   def set_draw
     @draw = Draw.find_by(id: params[:draw_id])
   end
-  
+
   def interpretation_params
     params.require(:interpretation).permit(:body, :draw_id)
   end

@@ -1,4 +1,4 @@
 class InterpretationSerializer < ActiveModel::Serializer
-  attributes :id, :body
-  has_one :draw
+  attributes :id, :body, :draw_id
+  belongs_to :draw
 end
