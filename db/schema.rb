@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_03_214131) do
+ActiveRecord::Schema.define(version: 2021_06_10_213920) do
 
   create_table "cards", force: :cascade do |t|
     t.string "name"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 2021_06_03_214131) do
     t.text "meaning_up"
     t.text "meaning_rev"
     t.text "desc"
+    t.boolean "reversed", default: false
   end
 
   create_table "draws", force: :cascade do |t|
